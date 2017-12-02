@@ -21,6 +21,7 @@ export default {
       console.log(codeArray, 'array');
 
       commit(m.STORE_CODE, codeArray[0].code);
+      commit(m.STORE_HIGHSCORES, codeArray[0].highscores);
       })
     .catch((error) => {
       console.log(error);

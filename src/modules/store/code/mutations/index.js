@@ -10,5 +10,8 @@ export default {
   },
   [m.STORE_CODE](state, code) {
     state[s.code] = code;
+  },
+  [m.STORE_HIGHSCORES](state, highscores) {
+    state[s.highscores] = highscores;
   }
 };

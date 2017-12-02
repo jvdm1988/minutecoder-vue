@@ -1,16 +1,19 @@
 <template>
   <div id="coder">
+    <timer></timer>
     <!-- DOM renders only if code is received from server -->
     <div v-if="codeFromServer">
       <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer">{{ char }}</span></code></pre>
+      <score></score>
     </div>
-    <timer></timer>
   </div>
 </template>
 
 <script>
   import store from 'store';
   import timer from './timer.vue';
+  import score from './score.vue';
+
   import * as codeGetters from 'store/code/getters/const';
   import * as codeMutations from 'store/code/mutations/const';
   import * as codeActions from 'store/code/actions/const';
@@ -18,7 +21,8 @@
 
   export default {
     components: {
-      timer
+      timer,
+      score
     },
     data() {
       return {
@@ -85,11 +89,6 @@
           }
         }
       }
-      // codeFromServer(newCode, oldCode) {
-      //   if (newCode !== oldCode) {
-      //     this.code = newCode;
-      //   }
-      // }
     },
     mounted() {
 
