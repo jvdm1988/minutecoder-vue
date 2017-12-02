@@ -1,26 +1,24 @@
 <template>
-  <form class="login-form">
+  <form @submit.prevent="onSubmit" class="login-form">
     <v-text-field
       label="Username"
       v-model="username"
-      :error-messages="usernameErrors"
       :counter="20"
-      @input="$v.username.$touch()"
-      @blur="$v.username.$touch()"
       required
     ></v-text-field>
     <v-text-field
-      v-validate="'required'"
-      label="Password"
-      v-model="password"
-      :error-messages="passwordErrors"
-      :counter="10"
-      @input="$v.password.$touch()"
-      @blur="$v.password.$touch()"
+      label="Email"
+      v-model="email"
       required
     ></v-text-field>
-    <v-btn @click="submit">submit</v-btn>
-    <v-btn @click="clear">clear</v-btn>
+    <v-text-field
+      label="Password"
+      v-model="password"
+      :counter="10"
+      required
+    ></v-text-field>
+    <button class="form-button" type="submit">SUBMIT</button>
+
   </form>
 </template>
 
@@ -32,6 +30,7 @@ import { mapActions } from 'vuex';
   export default {
     data () {
       return {
+        username: '',
         email: '',
         password: ''
       }
@@ -42,6 +41,7 @@ import { mapActions } from 'vuex';
       }),
       onSubmit () {
         const formData = {
+          username: this.username,
           email: this.email,
           password: this.password,
         }
@@ -63,4 +63,26 @@ import { mapActions } from 'vuex';
   .primary--text {
     color: #fa923f !important;
   }
+
+  .form-button {
+    margin-top: 30px;
+    border: 1px solid #cccccc;
+    padding: 5px 15px;
+    color: #606060;
+    box-shadow: 1px 1px 3px #cccccc;
+  }
+
+    .form-button:hover,
+    .form-button:active,
+    .form-button:focus {
+      background-color: #521751;
+      color: #fff;
+      -moz-transition: all 0.3s ease-in;
+      /* WebKit */
+      -webkit-transition: all 0.3s ease-in;
+      /* Opera */
+      -o-transition: all 0.3s ease-in;
+      /* Standard */
+      transition: all 0.3s ease-in;
+    }
 </style>

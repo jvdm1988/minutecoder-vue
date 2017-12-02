@@ -12,6 +12,7 @@ export default {
   [a.signup] ({commit, dispatch}, authData) {
     axios.post('/signupNewUser?key=AIzaSyAEJvu2s0oJqdRxq5GqQQu6_RcN9Rz92Bc', {
       // authData is form data passed from signup.vue
+      username: authData.username,
       email: authData.email,
       password: authData.password,
       returnSecureToken: true
