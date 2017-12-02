@@ -3,11 +3,16 @@ import VueRouter from 'vue-router';
 import App from 'components/App.vue';
 import axios from 'axios';
 import hljs from 'highlight.js';
+import Vuetify from 'vuetify';
+import VeeValidate from 'vee-validate';
+import 'vuetify/dist/vuetify.min.css';
 
 import router from 'modules/router/router';
 import store from 'store';
 
 Vue.use(VueRouter);
+Vue.use (Vuetify);
+Vue.use (VeeValidate);
 
 axios.defaults.baseURL = 'https://minute-coder.firebaseio.com';
 
