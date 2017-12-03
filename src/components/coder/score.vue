@@ -5,8 +5,8 @@
       <div class="scores">
         <p v-for="(score, index) in highscores"><span>#{{index + 1}}</span> {{highscores[index].username}}: {{highscores[index].score}} secs</p>
       </div>
-      <button>restart</button>
-      <button @click="save({score: score, username: username, codeId: codeId})">save</button>
+      <button class="score-button">restart</button>
+      <button class="score-button" @click="save({score: score, username: username, codeId: codeId})">save</button>
     </div>
 </template>
 
@@ -79,12 +79,6 @@
     font-weight: bold;
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    max-width: 80px;
-  }
-
   h2 {
       margin-bottom: 10px;
   }
@@ -93,7 +87,7 @@
     color: #000;
   }
 
-  button {
+  .score-button {
       text-decoration: none;
       display: inline-block;
       border: 1px solid #cccccc;
@@ -102,10 +96,11 @@
       padding: 10px;
       box-sizing: border-box;
       color: #000;
+      margin: 5px;
   }
 
-  button:hover,
-  button:active {
+   .score-button:hover,
+   .score-button:active {
     background-color: #016dba;
     color: white;
     -moz-transition: all 0.3s ease-in;

@@ -80,18 +80,5 @@
     color: #000;
   }
 
-  /* EXPLANATION */
-  .explanation {
-    background-color: #c4c4c4;
-  }
-
-  .explanation h2,
-  .explanation p {
-    color: #000;
-  }
-
-  .container.grid-list-md .layout .flex {
-    padding: 1px;
-}
 
 </style>
