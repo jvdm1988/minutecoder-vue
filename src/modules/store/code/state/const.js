@@ -3,3 +3,4 @@ export const started = 'started';
 export const highscores = 'highscores';
 export const completed = 'completed';
 export const codeId = 'codeId';
+export const language = 'language';

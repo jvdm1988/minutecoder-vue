@@ -5,8 +5,8 @@ import globalAxios from 'axios';
 
 export default {
 
-  [a.getCode]({commit}) {
-    globalAxios.get('/javascript.json')
+  [a.getCode]({commit}, language) {
+    globalAxios.get(`/${language}.json`)
     .then((res) => {
       const codeObject = res.data;
       const codeArray = [];

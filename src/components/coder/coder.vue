@@ -13,10 +13,11 @@
   import store from 'store';
   import timer from './timer.vue';
 
+  import * as codeState from 'store/code/state/const';
   import * as codeGetters from 'store/code/getters/const';
   import * as codeMutations from 'store/code/mutations/const';
   import * as codeActions from 'store/code/actions/const';
-  import { mapActions, mapGetters, mapMutations } from 'vuex';
+  import { mapActions, mapGetters, mapMutations, mapState } from 'vuex';
 
   export default {
     components: {
@@ -30,6 +31,9 @@
       };
     },
     computed: {
+      ...mapState('code', {
+        language: codeState.language
+      }),
       ...mapGetters('code', {
         codeFromServer: codeGetters.code,
         started: codeGetters.getStatus
@@ -90,7 +94,7 @@
     },
     mounted() {
 
-      this.getCode();
+      this.getCode(this.language);
 
       setTimeout(() => {
         // creates an array of hljs DOM spans. They are by reference
