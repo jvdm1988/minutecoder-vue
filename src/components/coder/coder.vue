@@ -5,7 +5,6 @@
     <div v-if="codeFromServer">
       <h3>JavaScript #{{codeFromServer.id}}</h3>
       <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer.code">{{ char }}</span></code></pre>
-      <score></score>
     </div>
   </div>
 </template>
@@ -13,7 +12,6 @@
 <script>
   import store from 'store';
   import timer from './timer.vue';
-  import score from './score.vue';
 
   import * as codeGetters from 'store/code/getters/const';
   import * as codeMutations from 'store/code/mutations/const';
@@ -22,8 +20,7 @@
 
   export default {
     components: {
-      timer,
-      score
+      timer
     },
     data() {
       return {

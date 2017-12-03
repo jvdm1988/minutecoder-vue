@@ -74,10 +74,7 @@ export default {
                 break;
               }
             }
-
-            console.log(username);
             commit(m.STORE_USER, username);
-            console.log(s.username, 'wtf?')
           })
       })
       .catch(error => console.log(error))
@@ -94,20 +91,4 @@ export default {
     .then(res => console.log(res))
     .catch(error => console.log(error))
   }
-
-  // [a.fetchUser] ({commit, state}) {
-  //   globalAxios.get('/users.json' + '?auth=' + state.idToken)
-  //   .then(res => {
-  //     const data = res.data;
-  //     const users = [];
-  //     for (let key in data) {
-  //       const user = data[key];
-  //       user.id = key;
-  //       users.push(user);
-  //     }
-  //     console.log(res.data, 'heyyy');
-  //     commit(m.STORE_USER, users[0]);
-  //   })
-  //   .catch(error => console.log(error))
-  // }
 };
