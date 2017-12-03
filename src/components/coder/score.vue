@@ -25,7 +25,8 @@
     computed: {
       ...mapState('code', {
         highscores: codeState.highscores,
-        completed: codeState.completed
+        completed: codeState.completed,
+        codeId: codeState.codeId
       }),
       ...mapState('auth', {
         username: authState.username,
@@ -88,10 +89,7 @@
   h2, p {
     color: #000;
   }
-
-  .flex.sm3 {
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 25%;
-    max-width: 100%;
+  button {
+    color: black;
   }
 </style>

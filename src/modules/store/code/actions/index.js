@@ -6,7 +6,7 @@ import globalAxios from 'axios';
 export default {
 
   [a.getCode]({commit}) {
-    globalAxios.get('/code.json')
+    globalAxios.get('/javascript.json')
     .then((res) => {
       const codeObject = res.data;
       const codeArray = [];
@@ -21,6 +21,7 @@ export default {
 
       commit(m.STORE_CODE, codeArray[0]);
       commit(m.STORE_HIGHSCORES, codeArray[0].highscores);
+      commit(m.STORE_CODEID, Object.keys(res.data)[0]);
       })
     .catch((error) => {
       console.log(error);
