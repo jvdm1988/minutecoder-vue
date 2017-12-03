@@ -2,7 +2,7 @@
   <div id="coder">
     <!-- DOM renders only if code is received from server -->
     <div v-if="codeFromServer">
-      <h3>{{language}} # {{codeFromServer.id}}</h3>
+      <h3>{{language}} Snippet # {{codeId}}</h3>
       <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer.code">{{ char }}</span></code></pre>
     </div>
   </div>
@@ -31,7 +31,8 @@
     },
     computed: {
       ...mapState('code', {
-        language: codeState.language
+        language: codeState.language,
+        codeId: codeState.codeId
       }),
       ...mapGetters('code', {
         codeFromServer: codeGetters.code,
