@@ -9,6 +9,8 @@
       <p><span>#4</span> User: Score</p>
       <p><span>#5</span> User: Score</p>
     </div>
+    <button>restart</button>
+ -  <button @click="save({score: score, username: username, codeId: codeId})">save</button>
   </div>
 </template>
 
