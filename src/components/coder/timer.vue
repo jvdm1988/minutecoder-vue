@@ -1,6 +1,6 @@
 <template>
   <div id="timer">
-    <div class="container">
+    <div class="timer-container timer-circle">
       <p id="result">{{seconds}}</p>
       <p id="sec">sec</p>
     </div>
@@ -45,16 +45,20 @@
 </script>
 
 <style lang="sass">
-  .container {
+  .timer-container {
     position: relative;
     margin: 0 auto;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: #3B3A3F;
     font-family: 'Roboto', sans-serif;
     text-align: center;
   }
+
+  .timer-circle{
+    background: #3B3A3F;
+  }
+
 
   #result, #sec {
     margin: 0;

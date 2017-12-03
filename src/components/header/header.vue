@@ -1,7 +1,7 @@
 <template>
   <header id="header">
     <div class="logo">
-      <router-link to="/">Vue - Complete Guide</router-link>
+      <router-link to="/">Minute Coder</router-link>
     </div>
     <nav>
       <ul>
@@ -9,7 +9,7 @@
           <router-link to="/signup">Sign Up</router-link>
         </li>
         <li v-if="!auth">
-          <router-link to="/signin">Sign In</router-link>
+          <router-link to="/signin">Log In</router-link>
         </li>
         <li v-if="auth">
           <router-link to="/dashboard">Dashboard</router-link>

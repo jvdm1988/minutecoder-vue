@@ -1,27 +1,25 @@
 <template>
-  <div id="signin">
-    <div class="signin-form">
-      <form @submit.prevent="onSubmit">
-        <div class="input">
-          <label for="email">Mail</label>
-          <input
-                  type="email"
-                  id="email"
-                  v-model="email">
-        </div>
-        <div class="input">
-          <label for="password">Password</label>
-          <input
-                  type="password"
-                  id="password"
-                  v-model="password">
-        </div>
-        <div class="submit">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>
+  <form @submit.prevent="onSubmit" class="login-form">
+    <v-text-field
+      label="Username"
+      v-model="username"
+      :counter="20"
+      required
+    ></v-text-field>
+    <v-text-field
+      label="Email"
+      v-model="email"
+      required
+    ></v-text-field>
+    <v-text-field
+      label="Password"
+      v-model="password"
+      :counter="10"
+      required
+    ></v-text-field>
+    <button class="form-button" type="submit">SUBMIT</button>
+
+  </form>
 </template>
 
 <script>
@@ -32,6 +30,7 @@ import { mapActions } from 'vuex';
   export default {
     data () {
       return {
+        username: '',
         email: '',
         password: ''
       }
@@ -42,6 +41,7 @@ import { mapActions } from 'vuex';
       }),
       onSubmit () {
         const formData = {
+          username: this.username,
           email: this.email,
           password: this.password,
         }
@@ -52,58 +52,37 @@ import { mapActions } from 'vuex';
 </script>
 
 <style lang="sass" scoped>
-  .signin-form {
-    width: 400px;
-    margin: 30px auto;
+  .login-form {
+    width: 60%;
+    margin: 0 auto;
     border: 1px solid #eee;
     padding: 20px;
     box-shadow: 0 2px 3px #ccc;
   }
 
-  .input {
-    margin: 10px auto;
+  .primary--text {
+    color: #fa923f !important;
   }
 
-  .input label {
-    display: block;
-    color: #4e4e4e;
-    margin-bottom: 6px;
+  .form-button {
+    margin-top: 30px;
+    border: 1px solid #cccccc;
+    padding: 5px 15px;
+    color: #606060;
+    box-shadow: 1px 1px 3px #cccccc;
   }
 
-  .input input {
-    font: inherit;
-    width: 100%;
-    padding: 6px 12px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-  }
-
-  .input input:focus {
-    outline: none;
-    border: 1px solid #521751;
-    background-color: #eee;
-  }
-
-  .submit button {
-    border: 1px solid #521751;
-    color: #521751;
-    padding: 10px 20px;
-    font: inherit;
-    cursor: pointer;
-  }
-
-  .submit button:hover,
-  .submit button:active {
-    background-color: #521751;
-    color: white;
-  }
-
-  .submit button[disabled],
-  .submit button[disabled]:hover,
-  .submit button[disabled]:active {
-    border: 1px solid #ccc;
-    background-color: transparent;
-    color: #ccc;
-    cursor: not-allowed;
-  }
+    .form-button:hover,
+    .form-button:active,
+    .form-button:focus {
+      background-color: #521751;
+      color: #fff;
+      -moz-transition: all 0.3s ease-in;
+      /* WebKit */
+      -webkit-transition: all 0.3s ease-in;
+      /* Opera */
+      -o-transition: all 0.3s ease-in;
+      /* Standard */
+      transition: all 0.3s ease-in;
+    }
 </style>
