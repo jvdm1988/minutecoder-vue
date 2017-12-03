@@ -3,7 +3,7 @@
       <timer></timer>
       <h2>Highscore:</h2>
       <div class="scores">
-        <p v-for="(score, index) in highscores"><span>#{{index + 1}}</span> User: {{highscores[index].username}} Record: {{highscores[index].score}} secs</p>
+        <p v-for="(score, index) in highscores"><span>#{{index + 1}}</span> {{highscores[index].username}}: {{highscores[index].score}} secs</p>
       </div>
       <button>restart</button>
       <button @click="save({score: score, username: username, codeId: codeId})">save</button>
