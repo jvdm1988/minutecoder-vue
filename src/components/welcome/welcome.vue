@@ -1,7 +1,7 @@
 <template>
   <div id="welcome">
     <div class="intro">
-      <h1 class="intro-title">Type fast, Think fast &amp; Do the 1-Minute test</h1>
+      <h1 class="intro-title">Type Fast, Think Fast &amp; Do the Test</h1>
       <p class="intro-text">Can you get the highscore title? We challenge you!</p>
       <p class="intro-text">Sign Up or Log In to start</p>
       <div class="cta">
