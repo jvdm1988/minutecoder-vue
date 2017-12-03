@@ -67,7 +67,7 @@ import { mapActions } from 'vuex';
 <style lang="sass" scoped>
   .signup-form {
     width: 60%;
-    margin: 0 auto;
+    margin: 10% auto;
     border: 1px solid #eee;
     padding: 20px;
     box-shadow: 0 2px 3px #ccc;
@@ -88,7 +88,7 @@ import { mapActions } from 'vuex';
   .form-button:hover,
   .form-button:active,
   .form-button:focus {
-    background-color: #521751;
+    background-color: #016dba;
     color: #fff;
     -moz-transition: all 0.3s ease-in;
     /* WebKit */

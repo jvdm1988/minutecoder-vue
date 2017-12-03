@@ -35,7 +35,7 @@
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #521751;
+    background-color: #016dba;
     padding: 0 20px;
   }
 

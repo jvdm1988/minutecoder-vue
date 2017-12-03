@@ -1,12 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit" class="login-form">
     <v-text-field
-      label="Username"
-      v-model="username"
-      :counter="20"
-      required
-    ></v-text-field>
-    <v-text-field
       label="Email"
       v-model="email"
       required
@@ -30,7 +24,6 @@ import { mapActions } from 'vuex';
   export default {
     data () {
       return {
-        username: '',
         email: '',
         password: ''
       }
@@ -41,7 +34,6 @@ import { mapActions } from 'vuex';
       }),
       onSubmit () {
         const formData = {
-          username: this.username,
           email: this.email,
           password: this.password,
         }
@@ -54,7 +46,7 @@ import { mapActions } from 'vuex';
 <style lang="sass" scoped>
   .login-form {
     width: 60%;
-    margin: 0 auto;
+    margin: 10% auto;
     border: 1px solid #eee;
     padding: 20px;
     box-shadow: 0 2px 3px #ccc;
@@ -75,7 +67,7 @@ import { mapActions } from 'vuex';
     .form-button:hover,
     .form-button:active,
     .form-button:focus {
-      background-color: #521751;
+      background-color: #016dba;
       color: #fff;
       -moz-transition: all 0.3s ease-in;
       /* WebKit */
