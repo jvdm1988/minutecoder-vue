@@ -162,7 +162,7 @@
     padding: 20px;
     background: #002b36;
     color: #839496;
-    min-height: 390px;
+    min-height: 403px;
     width: 80%;
     margin-bottom: 20px;
     margin-right: auto;
