@@ -1,14 +1,21 @@
 <template>
   <div id="welcome">
-    <h1>Time to learn something new!</h1>
-    <p>You found the best place to learn - and now you're just one sign in (or sign up) away from it!</p>
-    <div class="cta">
-      <router-link to="/signup">Sign Up</router-link>
-      <router-link to="/signin">Log In</router-link>
+    <div class="intro">
+      <h1 class="intro-title">Type fast, Think fast &amp; Do the 1-Minute test</h1>
+      <p class="intro-text">Can you get the highscore title? We challenge you!</p>
+      <p class="intro-text">Sign Up or Log In to start</p>
+      <div class="cta">
+        <button type="button" name="button"><router-link to="/signup">Sign Up</router-link></button>
+        <button type="button" name="button"><router-link to="/signin">Log In</router-link></button>
+        <img class="keyboard-img" src="../img/keyboard1.png" alt="">
+      </div>
     </div>
-    <coder></coder>
+    <div class="explanation">
+      <h2>test</h2>
+    </div>
   </div>
 </template>
+
 
 <script>
   import coder from 'components/coder/coder.vue';
@@ -23,15 +30,24 @@
 <style lang="sass">
   @import '~assets/highlight/solarized-dark.css';
   #welcome {
-    width: 80%;
-    margin: auto;
+    width: 100%;
+    margin: 0;
   }
 
-  h1 {
+  .intro {
+    padding: 60px;
+  }
+
+  .intro-2 {
+    width: 100%;
+  }
+
+  .intro-title {
     text-align: center;
+    margin-bottom: 20px;
   }
 
-  p {
+  .intro-text {
     text-align: center;
   }
 
@@ -45,17 +61,51 @@
     margin: 10px;
     text-decoration: none;
     display: inline-block;
-    border: 1px solid #521751;
+    border: 1px solid #cccccc;
     border-radius: 3px;
     width: 100px;
     padding: 10px;
     box-sizing: border-box;
-    color: #521751;
+    color: #000;
   }
 
   .cta a:hover,
   .cta a:active {
-    background-color: #521751;
+    background-color: #016dba;
     color: white;
+    -moz-transition: all 0.3s ease-in;
+    /* WebKit */
+    -webkit-transition: all 0.3s ease-in;
+    /* Opera */
+    -o-transition: all 0.3s ease-in;
+    /* Standard */
+    transition: all 0.3s ease-in;
   }
+
+  .keyboard-img {
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  h2, p {
+    color: #000;
+  }
+
+  /* EXPLANATION */
+  .explanation {
+    background-color: #c4c4c4;
+  }
+
+  .explanation h2,
+  .explanation p {
+    color: #000;
+  }
+
+  .container.grid-list-md .layout .flex {
+    padding: 1px;
+}
+
 </style>
