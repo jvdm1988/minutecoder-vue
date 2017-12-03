@@ -10,9 +10,6 @@
         <img class="keyboard-img" src="../img/keyboard1.png" alt="">
       </div>
     </div>
-    <div class="explanation">
-      <h2>test</h2>
-    </div>
   </div>
 </template>
 
