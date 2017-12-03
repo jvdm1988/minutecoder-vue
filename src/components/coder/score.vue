@@ -1,17 +1,18 @@
 <template>
-  <div id="score-list">
-    <img src="../../assets/code/img/trophy.png" alt="">
-    <h2>Highscore</h2>
-    <div class="scores">
-      <p v-for="(score, index) in highscores"><span>#{{index + 1}}</span> User: {{highscores[index].username}} Record: {{highscores[index].score}} secs</p>
+    <div id="score-list">
+      <timer></timer>
+      <h2>Highscore:</h2>
+      <div class="scores">
+        <p v-for="(score, index) in highscores"><span>#{{index + 1}}</span> User: {{highscores[index].username}} Record: {{highscores[index].score}} secs</p>
+      </div>
+      <button>restart</button>
+      <button @click="save({score: score, username: username, codeId: codeId})">save</button>
     </div>
-    <button>restart</button>
- -  <button @click="save({score: score, username: username, codeId: codeId})">save</button>
-  </div>
 </template>
 
 <script>
   import store from 'store';
+  import timer from './timer.vue';
 
   import * as scoreActions from 'store/score/actions/const';
   import * as scoreState from 'store/score/state/const';
@@ -20,6 +21,9 @@
   import { mapState, mapActions } from 'vuex';
 
   export default {
+    components: {
+      timer
+    },
     computed: {
       ...mapState('code', {
         // highscores: codeState.highscores,
@@ -62,7 +66,7 @@
   .scores {
     border: 1px solid #e5e5e5;
     border-radius: 2px;
-    margin: 30px;
+    margin: 20px;
     padding: 10px;
   }
 
@@ -82,13 +86,34 @@
   }
 
   h2 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
   }
 
   h2, p {
     color: #000;
   }
+
   button {
-    color: black;
+      text-decoration: none;
+      display: inline-block;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      width: 100px;
+      padding: 10px;
+      box-sizing: border-box;
+      color: #000;
+  }
+
+  button:hover,
+  button:active {
+    background-color: #016dba;
+    color: white;
+    -moz-transition: all 0.3s ease-in;
+    /* WebKit */
+    -webkit-transition: all 0.3s ease-in;
+    /* Opera */
+    -o-transition: all 0.3s ease-in;
+    /* Standard */
+    transition: all 0.3s ease-in;
   }
 </style>

@@ -2,10 +2,9 @@
   <div id="coder">
     <!-- DOM renders only if code is received from server -->
     <div v-if="codeFromServer">
-      <h3>JavaScript #{{codeFromServer.id}}</h3>
+      <h3>{{language}} # {{codeFromServer.id}}</h3>
       <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer.code">{{ char }}</span></code></pre>
     </div>
-    <timer></timer>
   </div>
 </template>
 
@@ -150,6 +149,24 @@
 
 <style lang="sass">
   @import '~assets/highlight/solarized-dark.css';
+
+  #coder h3 {
+    color: #000;
+    margin-bottom: 20px;
+  }
+
+  .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #002b36;
+    color: #839496;
+    min-height: 390px;
+    width: 80%;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 
   .untouched {
     color: grey;

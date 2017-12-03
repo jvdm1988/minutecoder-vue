@@ -4,7 +4,7 @@
       <v-layout row wrap>
 
         <v-flex xs12 sm9>
-          <v-card dark color="grey lighten-2">
+          <v-card dark color="grey lighten-4">
             <v-card-text class="px-0">
               <coder></coder>
             </v-card-text>
