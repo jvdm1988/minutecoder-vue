@@ -7,7 +7,7 @@ export default {
     state[s.idToken] = userData.token;
     state[s.userId] = userData.userId;
   },
-  [m.STORE_USER](state, user) {
-    state[s.user] = user;
+  [m.STORE_USER](state, username) {
+    state[s.username] = username;
   }
 };

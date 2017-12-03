@@ -4,8 +4,6 @@
       <p id="result">{{seconds}}</p>
       <p id="sec">sec</p>
     </div>
-    <h3>
-    {{started}}</h3>
   </div>
 </template>
 

@@ -1,6 +1,5 @@
 import * as a from './const';
 import * as m from '../mutations/const';
-// import * as s from '../state/const';
 
 import globalAxios from 'axios';
 
@@ -20,7 +19,7 @@ export default {
       console.log(res.data);
       console.log(codeArray, 'array');
 
-      commit(m.STORE_CODE, codeArray[0].code);
+      commit(m.STORE_CODE, codeArray[0]);
       commit(m.STORE_HIGHSCORES, codeArray[0].highscores);
       })
     .catch((error) => {

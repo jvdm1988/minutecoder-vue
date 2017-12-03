@@ -3,7 +3,8 @@
     <timer></timer>
     <!-- DOM renders only if code is received from server -->
     <div v-if="codeFromServer">
-      <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer">{{ char }}</span></code></pre>
+      <h3>JavaScript #{{codeFromServer.id}}</h3>
+      <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer.code">{{ char }}</span></code></pre>
       <score></score>
     </div>
   </div>
@@ -111,10 +112,20 @@
 
           this.start();
 
+          // stop space bar from scrolling page
+          if (key === ' ') {
+            event.preventDefault();
+          }
+
+          // when user completes challenge
+          /////////////////////////////////////////
           if (this.index === this.nodes.length - 1) {
             this.stop();
             currentNode.classList.remove('active');
             currentNode.classList.remove('untouched');
+
+          /////////////////////////////////////////
+
           } else if (this.isMatch(currentNode, key)) {
             this.index++;
           } else if (this.isEnterKey(currentNode, key)) {

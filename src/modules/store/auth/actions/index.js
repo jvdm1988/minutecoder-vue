@@ -24,9 +24,18 @@ export default {
           token: res.data.idToken,
           userId: res.data.localId
         })
+        commit(m.STORE_USER, authData.username);
 
+        // remove . from string because firebase cannot have . in key
+        const email = authData.email.split('.').join("");
+
+        const userData = {};
+
+        userData[email] = {localId: res.data.localId, username: authData.username}
+
+        console.log(userData);
         // to store user data in Firebase database in addition to the Auth database
-        dispatch(a.storeUser, authData)
+        dispatch(a.storeUser, userData)
       })
       .catch(error => console.log(error));
   },
@@ -55,26 +64,27 @@ export default {
 
   [a.storeUser] ({commit, state}, userData) {
     if (!state.idToken) {
-      return
+      return;
     }
+
     globalAxios.post('/users.json' + '?auth=' + state.idToken, userData)
     .then(res => console.log(res))
     .catch(error => console.log(error))
-  },
-
-  [a.fetchUser] ({commit, state}) {
-    globalAxios.get('/users.json' + '?auth=' + state.idToken)
-    .then(res => {
-      const data = res.data;
-      const users = [];
-      for (let key in data) {
-        const user = data[key];
-        user.id = key;
-        users.push(user);
-      }
-      // console.log(users, 'heyyy');
-      commit(m.STORE_USER, users[0]);
-    })
-    .catch(error => console.log(error))
   }
+
+  // [a.fetchUser] ({commit, state}) {
+  //   globalAxios.get('/users.json' + '?auth=' + state.idToken)
+  //   .then(res => {
+  //     const data = res.data;
+  //     const users = [];
+  //     for (let key in data) {
+  //       const user = data[key];
+  //       user.id = key;
+  //       users.push(user);
+  //     }
+  //     console.log(res.data, 'heyyy');
+  //     commit(m.STORE_USER, users[0]);
+  //   })
+  //   .catch(error => console.log(error))
+  // }
 };
