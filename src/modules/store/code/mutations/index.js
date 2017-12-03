@@ -18,5 +18,9 @@ export default {
   },
   [m.STORE_CODEID](state, id) {
     state[s.codeId] = id;
+  },
+  [m.STORE_LANGUAGE](state, language) {
+    console.log(language, 'store language');
+    state[s.language] = language;
   }
 };

@@ -3,3 +3,4 @@ export const STOP = 'STOP';
 export const STORE_CODE = 'STORE_CODE';
 export const STORE_HIGHSCORES = 'STORE_HIGHSCORES';
 export const STORE_CODEID = 'STORE_CODEID';
+export const STORE_LANGUAGE = 'STORE_LANGUAGE';

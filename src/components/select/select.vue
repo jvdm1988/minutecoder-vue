@@ -1,5 +1,6 @@
 <template>
   <div id="select">
+<<<<<<< HEAD
     <router-link
       class="language-button"
       to="/dashboard"
@@ -11,22 +12,29 @@
       </div>
 
     </router-link>
+=======
+    <router-link to="/dashboard" v-for="language in languages" @click.native="select(language)" :key="language">{{language}}</router-link>
+>>>>>>> 29cb9459a481b0801b9fc483ef30742abebf94d7
   </div>
 </template>
 
 <script>
   import store from 'store';
 
-  import * as codeGetters from 'store/code/getters/const';
   import * as codeMutations from 'store/code/mutations/const';
-  import * as codeActions from 'store/code/actions/const';
-  import { mapActions, mapGetters, mapMutations } from 'vuex';
+
+  import { mapMutations } from 'vuex';
 
   export default {
     data() {
       return {
         languages: ['Javascript', 'Ruby']
       };
+    },
+    methods: {
+      ...mapMutations('code', {
+        select: codeMutations.STORE_LANGUAGE
+      })
     }
   }
 </script>

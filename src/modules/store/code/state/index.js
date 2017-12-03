@@ -5,5 +5,6 @@ export default {
   [state.code]: null,
   [state.started]: false,
   [state.highscores]: null,
-  [state.completed]: false
+  [state.completed]: false,
+  [state.language]: null
 };
