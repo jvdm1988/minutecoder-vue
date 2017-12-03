@@ -2,7 +2,7 @@
   <div id="coder">
     <!-- DOM renders only if code is received from server -->
     <div v-if="codeFromServer">
-      <h3>{{language}} Snippet # {{codeId}}</h3>
+      <h2>{{language}} Snippet # {{codeId}}</h2>
       <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer.code">{{ char }}</span></code></pre>
     </div>
   </div>
@@ -157,9 +157,10 @@
   }
 
   .hljs {
+    text-align: left;
     display: block;
     overflow-x: auto;
-    padding: 0.5em;
+    padding: 20px;
     background: #002b36;
     color: #839496;
     min-height: 390px;

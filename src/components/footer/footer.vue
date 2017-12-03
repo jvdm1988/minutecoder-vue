@@ -17,24 +17,28 @@
     text-align: center;
   }
 
-  footer img {
+  #footer img {
     width: 50px;
     height: auto;
   }
 
-  p,
-  a {
+  #footer p {
+    margin-bottom: 10px;
+  }
+
+  #footer p,
+  #footer a {
     font-size: 12px;
   }
 
-  a {
+  #footer a {
     color: #000;
     text-decoration: none;
   }
 
-  a:hover,
-  a:active,
-  a:focus {
+  #footer a:hover,
+  #footer a:active,
+  #footer a:focus {
     color: #fa923f;
   }
 </style>

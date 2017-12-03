@@ -1,7 +1,7 @@
 <template>
   <header id="header">
     <div class="logo">
-      <router-link to="/">Minute Coder</router-link>
+      <router-link to="/">MinuteCoder</router-link>
     </div>
     <nav>
       <ul>
@@ -48,7 +48,7 @@
     text-decoration: none;
     color: white;
   }
-
+    
   nav {
     height: 100%;
   }

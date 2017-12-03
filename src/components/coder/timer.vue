@@ -79,7 +79,7 @@
 
   #result {
     padding: 35px 0 0;
-    font-size: 80px;
+    font-size: 60px;
     line-height: 40px;
   }
 
