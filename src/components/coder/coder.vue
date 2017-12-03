@@ -94,7 +94,7 @@
     },
     mounted() {
 
-      this.getCode(this.language);
+      this.getCode(this.language.toLowerCase());
 
       setTimeout(() => {
         // creates an array of hljs DOM spans. They are by reference

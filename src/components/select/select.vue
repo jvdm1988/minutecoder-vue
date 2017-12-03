@@ -1,10 +1,10 @@
 <template>
   <div id="select">
-<<<<<<< HEAD
     <router-link
       class="language-button"
       to="/dashboard"
       v-for="language in languages"
+      @click.native="select(language)"
       :key="language">
 
       <div class="language">
@@ -12,9 +12,6 @@
       </div>
 
     </router-link>
-=======
-    <router-link to="/dashboard" v-for="language in languages" @click.native="select(language)" :key="language">{{language}}</router-link>
->>>>>>> 29cb9459a481b0801b9fc483ef30742abebf94d7
   </div>
 </template>
 
