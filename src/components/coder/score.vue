@@ -12,6 +12,8 @@
                 <p><span>#2</span> User: Score</p>
                 <p><span>#3</span> User: Score</p>
               </div>
+              <button>restart</button>
+              <button @click="save({score: score, username: username})">save</button>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -96,5 +98,8 @@
 
   h2, p {
     color: #000;
+  }
+  button {
+    color: black;
   }
 </style>

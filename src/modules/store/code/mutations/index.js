@@ -15,5 +15,8 @@ export default {
   },
   [m.STORE_HIGHSCORES](state, highscores) {
     state[s.highscores] = highscores;
+  },
+  [m.STORE_CODEID](state, id) {
+    state[s.codeId] = id;
   }
 };
