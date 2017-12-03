@@ -68,7 +68,7 @@
   }
 
   .timer-circle{
-    background: #3B3A3F;
+    background: #002b36;
   }
 
   #result, #sec {
@@ -92,6 +92,10 @@
     left: 20px;
     opacity: .1;
     z-index: 9999;
+  }
+
+  #timer {
+    margin-bottom: 20px;
   }
 
 </style>
