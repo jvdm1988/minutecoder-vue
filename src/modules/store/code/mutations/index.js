@@ -4,9 +4,11 @@ import * as s from '../state/const';
 export default {
   [m.START](state) {
     state[s.started] = true;
+    state[s.completed] = false;
   },
   [m.STOP](state) {
     state[s.started] = false;
+    state[s.completed] = true;
   },
   [m.STORE_CODE](state, code) {
     state[s.code] = code;

@@ -6,5 +6,8 @@ export default {
   },
   [g.getStatus](state) {
     return state.started;
+  },
+  [g.completed](state) {
+    return state.completed;
   }
 };

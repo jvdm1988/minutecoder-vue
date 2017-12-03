@@ -5,18 +5,14 @@ import globalAxios from 'axios';
 
 export default {
 
-  [a.saveScore]({commit}) {
-    globalAxios.get('/code.json')
-    .then((res) => {
-      const codeObject = res.data;
-
-      console.log(res, 'response');
-
-      commit(m.STORE_CODE, codeArray[0].code);
-      commit(m.STORE_HIGHSCORES, codeArray[0].highscores);
-      })
-    .catch((error) => {
-      console.log(error);
-    });
+  [a.saveScore]({commit}, score) {
+    console.log(score);
+  //   globalAxios.get('/code.json')
+  //   .then((res) => {
+  //     console.log(res, 'response');
+  //     })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
   }
 };

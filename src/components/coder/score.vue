@@ -7,21 +7,38 @@
         <th>{{score.score}}</th>
       </tr>
     </table>
+    <div>
+      <button>Restart</button>
+      <button @click="save({score: score, username: username})">Save Score</button>
+    </div>
   </div>
 </template>
 
 <script>
   import store from 'store';
 
+  import * as scoreActions from 'store/score/actions/const';
+  import * as scoreState from 'store/score/state/const';
   import * as codeState from 'store/code/state/const';
-  // import * as codeMutations from 'store/code/mutations/const';
-  // import * as codeActions from 'store/code/actions/const';
-  import { mapState } from 'vuex';
+  import * as authState from 'store/auth/state/const';
+  import { mapState, mapActions } from 'vuex';
 
   export default {
     computed: {
       ...mapState('code', {
-        highscores: codeState.highscores
+        highscores: codeState.highscores,
+        completed: codeState.completed
+      }),
+      ...mapState('auth', {
+        username: authState.username,
+      }),
+      ...mapState('score', {
+        score: scoreState.score
+      })
+    },
+    methods: {
+      ...mapActions('score', {
+        save: scoreActions.saveScore
       })
     }
   }

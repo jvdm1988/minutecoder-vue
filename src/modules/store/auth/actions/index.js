@@ -43,21 +43,44 @@ export default {
   // login user
 
   [a.login] ({commit}, authData) {
-    console.log(authData);
     axios.post('/verifyPassword?key=AIzaSyAEJvu2s0oJqdRxq5GqQQu6_RcN9Rz92Bc', {
       email: authData.email,
       password: authData.password,
       returnSecureToken: true
     })
       .then(res => {
-        console.log(res);
         // the server responds back a data object with tokens
         commit(m.AUTH_USER, {
           token: res.data.idToken,
           userId: res.data.localId
         })
+      }).then( () => {
+        // get request for emails to find username
+        globalAxios.get('/users.json')
+          .then(res => {
+            const data = res.data;
+            const users = [];
+
+            for (let userId in data) {
+              users.push(data[userId]);
+            }
+
+            const formatEmail = authData.email.split('.').join("");
+            let username;
+
+            for (let i = 0; i < users.length; i++) {
+              if (users[i][formatEmail]) {
+                username = users[i][formatEmail].username;
+                break;
+              }
+            }
+
+            console.log(username);
+            commit(m.STORE_USER, username);
+            console.log(s.username, 'wtf?')
+          })
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(error))
   },
 
   // to store user data in Firebase database in addition to the Auth database

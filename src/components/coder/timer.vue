@@ -9,7 +9,9 @@
 
 <script>
   import * as codeGetters from 'store/code/getters/const';
-  import { mapGetters } from 'vuex'
+  import * as codeState from 'store/code/state/const';
+  import * as scoreMutations from 'store/score/mutations/const';
+  import { mapGetters, mapMutations } from 'vuex'
 
   export default {
     data() {
@@ -20,7 +22,13 @@
     },
     computed: {
       ...mapGetters('code', {
-        started: codeGetters.getStatus
+        started: codeGetters.getStatus,
+        completed: codeState.completed
+      })
+    },
+    methods: {
+      ...mapMutations('score', {
+        saveTime: scoreMutations.STORE_HIGHSCORE
       })
     },
     watch: {
@@ -36,6 +44,12 @@
         if (!newVal && this.intervalId) {
           clearInterval(this.intervalId);
           this.intervalId = null;
+        }
+      },
+      completed(newVal, oldVal) {
+        if (newVal !== oldVal && newVal === true) {
+          this.saveTime(this.seconds);
+          return;
         }
       }
     }
