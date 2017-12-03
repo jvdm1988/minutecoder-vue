@@ -12,7 +12,7 @@
           <router-link to="/signin">Log In</router-link>
         </li>
         <li v-if="auth">
-          <router-link to="/dashboard">Dashboard</router-link>
+          <router-link to="/select">Select Language</router-link>
         </li>
       </ul>
     </nav>

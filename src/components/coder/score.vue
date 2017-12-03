@@ -13,7 +13,7 @@
                 <p><span>#3</span> User: Score</p>
               </div>
               <button>restart</button>
-              <button @click="save({score: score, username: username})">save</button>
+              <button @click="save({score: score, username: username, codeId: codeId})">save</button>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -35,7 +35,8 @@
     computed: {
       ...mapState('code', {
         highscores: codeState.highscores,
-        completed: codeState.completed
+        completed: codeState.completed,
+        codeId: codeState.codeId
       }),
       ...mapState('auth', {
         username: authState.username,
