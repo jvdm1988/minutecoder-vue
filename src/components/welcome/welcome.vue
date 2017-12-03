@@ -7,22 +7,11 @@
       <div class="cta">
         <button type="button" name="button"><router-link to="/signup">Sign Up</router-link></button>
         <button type="button" name="button"><router-link to="/signin">Log In</router-link></button>
-        <img class="keyboard-img" src="../img/keyboard1.png" alt="">
+        <img class="keyboard-img" src="../../assets/code/img/keyboard1.png" alt="">
       </div>
     </div>
   </div>
 </template>
-
-
-<script>
-  import coder from 'components/coder/coder.vue';
-
-  export default {
-    components: {
-      coder
-    }
-  }
-</script>
 
 <style lang="sass">
   @import '~assets/highlight/solarized-dark.css';

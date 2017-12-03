@@ -24,9 +24,18 @@ export default {
           token: res.data.idToken,
           userId: res.data.localId
         })
+        commit(m.STORE_USER, authData.username);
 
+        // remove . from string because firebase cannot have . in key
+        const email = authData.email.split('.').join("");
+
+        const userData = {};
+
+        userData[email] = {localId: res.data.localId, username: authData.username}
+
+        console.log(userData);
         // to store user data in Firebase database in addition to the Auth database
-        dispatch(a.storeUser, authData)
+        dispatch(a.storeUser, userData)
       })
       .catch(error => console.log(error));
   },
@@ -34,47 +43,52 @@ export default {
   // login user
 
   [a.login] ({commit}, authData) {
-    console.log(authData);
     axios.post('/verifyPassword?key=AIzaSyAEJvu2s0oJqdRxq5GqQQu6_RcN9Rz92Bc', {
       email: authData.email,
       password: authData.password,
       returnSecureToken: true
     })
       .then(res => {
-        console.log(res);
         // the server responds back a data object with tokens
         commit(m.AUTH_USER, {
           token: res.data.idToken,
           userId: res.data.localId
         })
+      }).then( () => {
+        // get request for emails to find username
+        globalAxios.get('/users.json')
+          .then(res => {
+            const data = res.data;
+            const users = [];
+
+            for (let userId in data) {
+              users.push(data[userId]);
+            }
+
+            const formatEmail = authData.email.split('.').join("");
+            let username;
+
+            for (let i = 0; i < users.length; i++) {
+              if (users[i][formatEmail]) {
+                username = users[i][formatEmail].username;
+                break;
+              }
+            }
+            commit(m.STORE_USER, username);
+          })
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(error))
   },
 
   // to store user data in Firebase database in addition to the Auth database
 
   [a.storeUser] ({commit, state}, userData) {
     if (!state.idToken) {
-      return
+      return;
     }
+
     globalAxios.post('/users.json' + '?auth=' + state.idToken, userData)
     .then(res => console.log(res))
-    .catch(error => console.log(error))
-  },
-
-  [a.fetchUser] ({commit, state}) {
-    globalAxios.get('/users.json' + '?auth=' + state.idToken)
-    .then(res => {
-      const data = res.data;
-      const users = [];
-      for (let key in data) {
-        const user = data[key];
-        user.id = key;
-        users.push(user);
-      }
-      // console.log(users, 'heyyy');
-      commit(m.STORE_USER, users[0]);
-    })
     .catch(error => console.log(error))
   }
 };

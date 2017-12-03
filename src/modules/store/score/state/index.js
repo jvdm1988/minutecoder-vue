@@ -1,7 +1,6 @@
 import * as state from './const';
 
 export default {
-  [state.idToken]: null,
-  [state.userId]: null,
+  [state.score]: null,
   [state.username]: null
 };

@@ -1,13 +1,18 @@
 <template>
   <div id="coder">
-    <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in code">{{ char }}</span></code></pre>
     <timer></timer>
+    <!-- DOM renders only if code is received from server -->
+    <div v-if="codeFromServer">
+      <h3>JavaScript #{{codeFromServer.id}}</h3>
+      <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer.code">{{ char }}</span></code></pre>
+    </div>
   </div>
 </template>
 
 <script>
   import store from 'store';
   import timer from './timer.vue';
+
   import * as codeGetters from 'store/code/getters/const';
   import * as codeMutations from 'store/code/mutations/const';
   import * as codeActions from 'store/code/actions/const';
@@ -21,11 +26,12 @@
       return {
         index: 0,
         nodes: []
+        // code: null
       };
     },
     computed: {
       ...mapGetters('code', {
-        code: codeGetters.code,
+        codeFromServer: codeGetters.code,
         started: codeGetters.getStatus
       })
     },
@@ -85,39 +91,55 @@
     mounted() {
 
       this.getCode();
-      // creates an array of hljs DOM spans. They are by reference
 
-      this.nodes = Array.prototype.slice.call(this.$refs.code.children);
+      setTimeout(() => {
+        // creates an array of hljs DOM spans. They are by reference
 
-      // add the active class to first character
+        this.nodes = Array.prototype.slice.call(this.$refs.code.children);
 
-      this.nodes[0].classList.add('active');
+        // add the active class to first character
 
-      // handle User typing
+        this.nodes[0].classList.add('active');
 
-      window.addEventListener('keypress', (event) => {
-        const key = event.key;
-        const currentNode = this.nodes[this.index];
+        // handle User typing
 
-        this.start();
+        window.addEventListener('keypress', (event) => {
+          const key = event.key;
+          const currentNode = this.nodes[this.index];
 
-        if (this.index === this.nodes.length - 1) {
-          this.stop();
-          currentNode.classList.remove('active');
-          currentNode.classList.remove('untouched');
-        } else if (this.isMatch(currentNode, key)) {
-          this.index++;
-        } else if (this.isEnterKey(currentNode, key)) {
-          currentNode.classList.remove('return');
-          this.index++;
-          currentNode.classList.add('active');
-          // indent tabbed spaces after line break
-          this.indent();
-        } else {
-          currentNode.classList.add('incorrect');
-        }
-        return;
-      });
+          this.start();
+
+          // stop space bar from scrolling page
+          if (key === ' ') {
+            event.preventDefault();
+          }
+
+          // when user completes challenge
+          /////////////////////////////////////////
+          if (this.index === this.nodes.length - 1) {
+            this.stop();
+            currentNode.classList.remove('active');
+            currentNode.classList.remove('untouched');
+
+          /////////////////////////////////////////
+
+          } else if (this.isMatch(currentNode, key)) {
+            this.index++;
+          } else if (this.isEnterKey(currentNode, key)) {
+            currentNode.classList.remove('return');
+            this.index++;
+            currentNode.classList.add('active');
+            // indent tabbed spaces after line break
+            this.indent();
+          } else {
+            currentNode.classList.add('incorrect');
+          }
+          return;
+        });
+      }, 2000);
+    },
+    beforeDestroy() {
+      this.stop();
     }
   }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <footer id="footer">
-    <img src="../img/github-icon.png" alt="">
+    <img src="../../assets/code/img/github-icon.png" alt="">
     <p>Follow us on Github:</p>
     <a href="https://github.com/RyanCommits">Ryan Wang</a> |
     <a href="https://github.com/allanac">Allana Coleman</a> |
