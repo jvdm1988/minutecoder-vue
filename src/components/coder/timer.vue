@@ -60,8 +60,8 @@
   .timer-container {
     position: relative;
     margin: 0 auto;
-    width: 200px;
-    height: 200px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     font-family: 'Roboto', sans-serif;
     text-align: center;
@@ -71,17 +71,16 @@
     background: #3B3A3F;
   }
 
-
   #result, #sec {
     margin: 0;
-    color: #00CE9B;
+    color: #fa923f;
     font-weight: 700;
   }
 
   #result {
-    padding: 60px 0 0;
+    padding: 35px 0 0;
     font-size: 80px;
-    line-height: 60px;
+    line-height: 40px;
   }
 
   #sec {
