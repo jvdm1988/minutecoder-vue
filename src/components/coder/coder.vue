@@ -1,11 +1,11 @@
 <template>
   <div id="coder">
-    <timer></timer>
     <!-- DOM renders only if code is received from server -->
     <div v-if="codeFromServer">
       <h3>JavaScript #{{codeFromServer.id}}</h3>
       <pre v-highlightjs><code ref="code"><span class="code untouched" v-for="char in codeFromServer.code">{{ char }}</span></code></pre>
     </div>
+    <timer></timer>
   </div>
 </template>
 
