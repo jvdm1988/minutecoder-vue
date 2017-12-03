@@ -28,7 +28,7 @@
   export default {
     data() {
       return {
-        languages: ['Javascript', 'Ruby']
+        languages: ['JavaScript', 'Ruby']
       };
     },
     methods: {
