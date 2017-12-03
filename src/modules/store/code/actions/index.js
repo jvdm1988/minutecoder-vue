@@ -15,13 +15,11 @@ export default {
         codeArray.push(codeObject[i]);
       }
 
-      console.log(res, 'response');
-      console.log(res.data);
-      console.log(codeArray, 'array');
+      const randomIndex = Math.floor(Math.random() * codeArray.length);
 
-      commit(m.STORE_CODE, codeArray[0]);
-      commit(m.STORE_HIGHSCORES, codeArray[0].highscores);
-      commit(m.STORE_CODEID, Object.keys(res.data)[0]);
+      commit(m.STORE_CODE, codeArray[randomIndex]);
+      commit(m.STORE_HIGHSCORES, codeArray[randomIndex].highscores);
+      commit(m.STORE_CODEID, Object.keys(res.data)[randomIndex]);
       })
     .catch((error) => {
       console.log(error);

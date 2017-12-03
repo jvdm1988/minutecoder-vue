@@ -1,3 +1,5 @@
+import router from 'modules/router/router.js';
+
 import * as a from './const';
 import * as m from '../mutations/const';
 import * as s from '../state/const';
@@ -37,12 +39,15 @@ export default {
         // to store user data in Firebase database in addition to the Auth database
         dispatch(a.storeUser, userData)
       })
+      .then(res => {
+        router.push('select');
+      })
       .catch(error => console.log(error));
   },
 
   // login user
 
-  [a.login] ({commit}, authData) {
+  [a.login] ({commit, state, rootState}, authData) {
     axios.post('/verifyPassword?key=AIzaSyAEJvu2s0oJqdRxq5GqQQu6_RcN9Rz92Bc', {
       email: authData.email,
       password: authData.password,
@@ -76,6 +81,7 @@ export default {
             }
             commit(m.STORE_USER, username);
           })
+          router.push('select');
       })
       .catch(error => console.log(error))
   },
