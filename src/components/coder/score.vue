@@ -3,11 +3,7 @@
     <img src="../../assets/code/img/trophy.png" alt="">
     <h2>Highscore</h2>
     <div class="scores">
-      <p><span>#1</span> User: Score</p>
-      <p><span>#2</span> User: Score</p>
-      <p><span>#3</span> User: Score</p>
-      <p><span>#4</span> User: Score</p>
-      <p><span>#5</span> User: Score</p>
+      <p v-for="(score, index) in highscores"><span>#{{index + 1}}</span> User: {{highscores[index].username}} Record: {{highscores[index].score}} secs</p>
     </div>
     <button>restart</button>
  -  <button @click="save({score: score, username: username, codeId: codeId})">save</button>
@@ -26,9 +22,10 @@
   export default {
     computed: {
       ...mapState('code', {
-        highscores: codeState.highscores,
+        // highscores: codeState.highscores,
         completed: codeState.completed,
-        codeId: codeState.codeId
+        codeId: codeState.codeId,
+        highscores: codeState.highscores
       }),
       ...mapState('auth', {
         username: authState.username,
